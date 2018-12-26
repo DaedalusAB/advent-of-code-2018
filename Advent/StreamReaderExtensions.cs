@@ -17,5 +17,18 @@ namespace Advent
 
             return result;
         }
+
+        public static IEnumerable<string> ReadAllLines(this StreamReader stream)
+        {
+            var result = new List<string>();
+            string line;
+
+            while ((line = stream.ReadLine()) != null)
+            {
+                result.Add(line);
+            }
+
+            return result;
+        }
     }
 }
