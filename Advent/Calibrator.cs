@@ -13,15 +13,16 @@ namespace Advent
         public static int CalibrateWithRepeat(IEnumerable<int> input)
         {
             var result = 0;
-            var savedResults = new List<int>() { result };
+            var savedResults = new Dictionary<int, int>() { { result, result } };
 
             foreach (var i in input.Cycle())
             {
                 result += i;
-                if (savedResults.Contains(result))
+                
+                if (savedResults.ContainsKey(result))
                     return result;
 
-                savedResults.Add(result);
+                savedResults.Add(result, result);
             }
 
             return result;
