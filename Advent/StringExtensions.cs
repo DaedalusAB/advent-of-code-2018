@@ -15,5 +15,10 @@ namespace Advent
                 .Any(t => t == times);
 
         }
+
+        public static bool DiffersOnSingleIndex(this string input, string other) => 
+            input
+                .Zip(other, (i, o) => i == o)
+                .Count(t => !t) == 1;
     }
 }

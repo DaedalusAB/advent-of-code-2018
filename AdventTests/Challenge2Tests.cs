@@ -54,6 +54,15 @@ namespace AdventTests
             Assert.Equal(5952, BoxChecksum.CalculateChecksum(inputs));
         }
 
+        [Theory]
+        [InlineData("abcde", "fghji", false)]
+        [InlineData("fghij", "fguij", true)]
+        [InlineData("fghii", "fguij", false)]
+        public void StringsDifferOnOnlyOneIndex(string input1, string input2, bool result)
+        {
+            Assert.Equal(result, input1.DiffersOnSingleIndex(input2));
+        }
+
         public static IEnumerable<object[]> BoxesCheksumCases()
         {
             yield return new object[]
