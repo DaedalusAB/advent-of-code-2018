@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Advent
@@ -11,9 +12,18 @@ namespace Advent
             return enumerable.Count(i => i.ContainsSameLetter(2)) * enumerable.Count(i => i.ContainsSameLetter(3));
         }
 
-        public static string FindCommonIDs(string[] input)
+        public static IEnumerable<char> FindCommonIDs(IEnumerable<string> inputs)
         {
-            throw new System.NotImplementedException();
+            foreach (var input in inputs)
+            {
+                var similarId = inputs.FirstOrDefault(i => i.DiffersOnSingleIndex(input));
+                if (similarId != null)
+                {
+                    return similarId.RemoveAllDifferingChars(input);
+                }
+            }
+
+            return null;
         }
     }
 }
