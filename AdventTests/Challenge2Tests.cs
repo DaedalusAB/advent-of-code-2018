@@ -63,11 +63,35 @@ namespace AdventTests
             Assert.Equal(result, input1.DiffersOnSingleIndex(input2));
         }
 
+        [Theory]
+        [InlineData("fghij", "fguij", "fgij")]
+        [InlineData("aghijf", "fguija", "gij")]
+        [InlineData("fghij", "fguijxxx", "fgij")]
+        public void RemoveAllDifferingChars(string input1, string input2, string result)
+        {
+            Assert.Equal(result, input1.RemoveAllDifferingChars(input2));
+        }
+
+        [Theory]
+        [MemberData(nameof(BoxesAdvancedCheksumCases))]
+        public void BoxeChecksum_Advanced(string[] input, string common)
+        {
+            Assert.Equal(common, BoxChecksum.FindCommonIDs(input));
+        }
+
         public static IEnumerable<object[]> BoxesCheksumCases()
         {
             yield return new object[]
             {
                 new [] { "abcdef", "bababc", "abbcde", "abcccd", "aabcdd", "abcdee", "ababab" }, 12
+            };
+        }
+
+        public static IEnumerable<object[]> BoxesAdvancedCheksumCases()
+        {
+            yield return new object[]
+            {
+                new [] { "abcde", "fghij", "klmno", "pqrst", "fguij", "axcye", "wvxyz" }, "fghij"
             };
         }
     }

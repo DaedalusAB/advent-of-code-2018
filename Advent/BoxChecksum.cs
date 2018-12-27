@@ -10,5 +10,10 @@ namespace Advent
             var enumerable = input.ToList();
             return enumerable.Count(i => i.ContainsSameLetter(2)) * enumerable.Count(i => i.ContainsSameLetter(3));
         }
+
+        public static string FindCommonIDs(string[] input)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
