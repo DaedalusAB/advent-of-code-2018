@@ -26,25 +26,17 @@ namespace Challenge1.Tests
         [Fact]
         public void CalibrateFrequency_ShouldAggregateAllInputs_LoadInputsFromFile()
         {
-            List<int> input;
-            using (var file = new StreamReader("Files/frequency.txt"))
-            {
-                input = file.ReadAllLinesAsIntegers().ToList();
-            }
+            var inputs = new FileParser("Files/frequency.txt").ReadAllLinesAsIntegers();
 
-            Assert.Equal(490, Calibrator.Calibrate(input));
+            Assert.Equal(490, Calibrator.Calibrate(inputs));
         }
 
         [Fact]
         public void CalibrateFrequencyWithRepeat_ShouldAggregateAllInputs_LoadInputsFromFile()
         {
-            List<int> input;
-            using (var file = new StreamReader("Files/frequency.txt"))
-            {
-                input = file.ReadAllLinesAsIntegers().ToList();
-            }
+            var inputs = new FileParser("Files/frequency.txt").ReadAllLinesAsIntegers();
 
-            Assert.Equal(70357, Calibrator.CalibrateWithRepeat(input));
+            Assert.Equal(70357, Calibrator.CalibrateWithRepeat(inputs));
         }
 
         public static IEnumerable<object[]> FrequencyCases()

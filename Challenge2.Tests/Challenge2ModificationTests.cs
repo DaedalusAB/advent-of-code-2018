@@ -39,11 +39,7 @@ namespace Challenge2.Tests
         [Fact]
         public void BoxesCheksumFromFile_Advanced()
         {
-            List<string> inputs;
-            using (var file = new StreamReader("Files/boxes.txt"))
-            {
-                inputs = file.ReadAllLines().ToList();
-            }
+            var inputs = new FileParser("Files/boxes.txt").ReadAllLines();
 
             Assert.Equal("krdmtuqjgwfoevnaboxglzjph", BoxChecksum.FindCommonIDs(inputs));
         }
