@@ -5,10 +5,10 @@ namespace Challenge1
 {
     public static class EnumerableExtensions
     {
-        public static IEnumerable<T> Cycle<T>(this IEnumerable<T> enumerable, int index = 0)
+        public static IEnumerable<T> Cycle<T>(this IEnumerable<T> enumerable)
         {
             var count = enumerable.Count();
-            index = index % count;
+            var index = 0;
 
             while (true)
             {

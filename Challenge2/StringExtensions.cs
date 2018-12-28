@@ -5,13 +5,13 @@ namespace Challenge2
 {
     public static class StringExtensions
     {
-        public static bool ContainsSameLetter(this string input, int times) =>
+        public static bool HasRepeatingLetter(this string input, int timesRepeated) =>
             input
-                .GroupBy(i => i)
-                .Select(group => @group.Count())
-                .Any(t => t == times);
+                .GroupBy(letter => letter)
+                .Select(group => group.Count())
+                .Any(letterRepetitions => letterRepetitions == timesRepeated);
 
-        public static bool DiffersOnSingleIndex(this string input, string other) =>
+        public static bool HasDifferenceOnSingleIndex(this string input, string other) =>
             input
                 .Zip(other, (i, o) => i == o)
                 .Count(t => !t) == 1;
@@ -19,7 +19,7 @@ namespace Challenge2
         public static IEnumerable<char> RemoveAllDifferingChars(this string input, string other) =>
             input
                 .Zip(other, (i, o) => new { Original = i, Other = o })
-                .Where(t => t.Original == t.Other)
-                .Select(t => t.Original);
+                .Where(pairs => pairs.Original == pairs.Other)
+                .Select(samePairs => samePairs.Original);
     }
 }

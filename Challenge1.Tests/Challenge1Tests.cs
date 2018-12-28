@@ -11,20 +11,20 @@ namespace Challenge1.Tests
         [Theory]
         [MemberData(nameof(FrequencyCases))]
 
-        public void Frequency_Simple(int[] input, int result)
+        public void CalibrateFrequency_ShouldAggregateAllInputs(int[] input, int result)
         {
             Assert.Equal(result, Calibrator.Calibrate(input));
         }
 
         [Theory]
         [MemberData(nameof(FrequencyRepeatCases))]
-        public void Frequency_Repeating(int[] input, int result)
+        public void CalibrateFrequencyWithRepeat_ShouldAggregateAllInputsUntillRepeatedResult(int[] input, int result)
         {
             Assert.Equal(result, Calibrator.CalibrateWithRepeat(input));
         }
 
         [Fact]
-        public void Frequency_FromFile()
+        public void CalibrateFrequency_ShouldAggregateAllInputs_LoadInputsFromFile()
         {
             List<int> input;
             using (var file = new StreamReader("Files/frequency.txt"))
@@ -36,7 +36,7 @@ namespace Challenge1.Tests
         }
 
         [Fact]
-        public void Frequency_Repeating_FromFile()
+        public void CalibrateFrequencyWithRepeat_ShouldAggregateAllInputs_LoadInputsFromFile()
         {
             List<int> input;
             using (var file = new StreamReader("Files/frequency.txt"))

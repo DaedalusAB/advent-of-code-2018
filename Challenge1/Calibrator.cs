@@ -5,10 +5,8 @@ namespace Challenge1
 {
     public class Calibrator
     {
-        public static int Calibrate(IEnumerable<int> input)
-        {
-            return input.Sum();
-        }
+        public static int Calibrate(IEnumerable<int> input) => 
+            input.Sum();
 
         public static int CalibrateWithRepeat(IEnumerable<int> input)
         {
