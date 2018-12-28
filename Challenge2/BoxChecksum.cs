@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Advent
+namespace Challenge2
 {
     public class BoxChecksum
     {

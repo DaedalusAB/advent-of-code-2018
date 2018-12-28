@@ -13,10 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Challenge2\Challenge2.csproj" />
+    <ProjectReference Include="..\Util\Util.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Files\boxes.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Files\frequency.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

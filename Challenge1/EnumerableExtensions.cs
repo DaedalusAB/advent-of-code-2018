@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Advent
+namespace Challenge1
 {
     public static class EnumerableExtensions
     {

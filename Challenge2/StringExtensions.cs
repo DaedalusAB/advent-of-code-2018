@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Advent
+namespace Challenge2
 {
     public static class StringExtensions
     {
@@ -17,9 +16,9 @@ namespace Advent
                 .Zip(other, (i, o) => i == o)
                 .Count(t => !t) == 1;
 
-        public static IEnumerable<char> RemoveAllDifferingChars(this string input, string other) => 
+        public static IEnumerable<char> RemoveAllDifferingChars(this string input, string other) =>
             input
-                .Zip(other, (i, o) => new {Original = i, Other = o})
+                .Zip(other, (i, o) => new { Original = i, Other = o })
                 .Where(t => t.Original == t.Other)
                 .Select(t => t.Original);
     }
