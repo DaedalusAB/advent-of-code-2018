@@ -16,4 +16,10 @@
     <ProjectReference Include="..\Challenge3\Challenge3.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Files\claims.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
