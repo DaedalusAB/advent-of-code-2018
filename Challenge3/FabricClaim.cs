@@ -27,6 +27,8 @@ namespace Challenge3
 
         public int Id { get; }
         public IEnumerable<Coordinate> ClaimedCoordinates { get; }
+        public int Size =>
+            ClaimedCoordinates.Count();
 
         private static IEnumerable<Coordinate> CalculateClaimedPieces(int offsetX, int offsetY, int width, int height)
         {

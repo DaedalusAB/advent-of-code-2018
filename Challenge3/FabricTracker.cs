@@ -6,11 +6,13 @@ namespace Challenge3
     public class FabricTracker
     {
         private const int Size = 1000;
+        private readonly List<FabricClaim> _trackedClaims;
         private readonly FabricPiece[] _pieces;
         private readonly Dictionary<int, bool> _overlapMap;
 
         public FabricTracker()
         {
+            _trackedClaims = new List<FabricClaim>();
             _pieces = new FabricPiece[Size * Size];
             _overlapMap = new Dictionary<int, bool>();
         }
@@ -20,8 +22,6 @@ namespace Challenge3
                 .Where(p => p != null)
                 .Count(p => p.Claims.Count > 1);
 
-        public int SingleNonOverlappingClaim =>
-            0;  //  TODO
 
         public void TrackAll(IEnumerable<FabricClaim> fabricClaims)
         {
@@ -30,6 +30,16 @@ namespace Challenge3
                 TrackSingleClaim(fabricClaim);
             }
         }
+
+        public int SingleNonOverlappingClaim() =>
+            _pieces
+                .Where(p => p?.Claims.Count == 1)
+                .Select(p => p.Claims.First())
+                .GroupBy(p => p)
+                .Select(g => new {Id = g.Key, Size = g.Count()})
+                .First(g => g.Size == _trackedClaims.Find(p => p.Id == g.Id).Size)
+                .Id;
+        // ewwwwwww
 
         private void TrackSingleClaim(FabricClaim fabricClaim)
         {
@@ -45,8 +55,7 @@ namespace Challenge3
                 _pieces[position].AddClaim(fabricClaim.Id);
             }
 
-            // TODO
+            _trackedClaims.Add(fabricClaim);
         }
-
     }
 }

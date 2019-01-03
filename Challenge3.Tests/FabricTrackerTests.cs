@@ -26,7 +26,7 @@ namespace Challenge3.Tests
             var tracker = new FabricTracker();
             tracker.TrackAll(fabricClaims);
 
-            Assert.Equal(0, tracker.SingleNonOverlappingClaim);
+            Assert.Equal(840, tracker.SingleNonOverlappingClaim());
         }
     }
 }
