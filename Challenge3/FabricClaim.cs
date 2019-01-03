@@ -20,9 +20,9 @@ namespace Challenge3
             var width = int.Parse(splitInput[4]);
             var height = int.Parse(splitInput[5]);
 
-            var claimedPieces = CalculateClaimedPieces(offsetX, offsetY, width, height);
+            var claimedCoordinates = CalculatedClaimedCoordinates(offsetX, offsetY, width, height);
 
-            return new FabricClaim(id, claimedPieces);
+            return new FabricClaim(id, claimedCoordinates);
         }
 
         public int Id { get; }
@@ -30,7 +30,7 @@ namespace Challenge3
         public int Size =>
             ClaimedCoordinates.Count();
 
-        private static IEnumerable<Coordinate> CalculateClaimedPieces(int offsetX, int offsetY, int width, int height)
+        private static IEnumerable<Coordinate> CalculatedClaimedCoordinates(int offsetX, int offsetY, int width, int height)
         {
             for (var x = 0; x < width; x++)
                 for (var y = 0; y < height; y++)
