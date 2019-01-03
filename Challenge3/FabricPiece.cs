@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Challenge3
 {
     public class FabricPiece
     {
         public List<int> Claims { get; }
-        public int X { get; }
-        public int Y { get; }
+        public Coordinate Coordinate { get; }
 
         public FabricPiece(int x, int y)
         {
-            X = x;
-            Y = y;
+            Coordinate = new Coordinate(x, y);
             Claims = new List<int>();
         }
 

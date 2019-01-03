@@ -6,9 +6,6 @@ namespace Challenge3
 {
     public class FabricClaim
     {
-        public int Id { get; }
-        public IEnumerable<Coordinate> ClaimedPieces { get; }
-
         public static IEnumerable<FabricClaim> ParseAll(IEnumerable<string> claims) =>
             claims.Select(Parse);
 
@@ -25,8 +22,11 @@ namespace Challenge3
 
             var claimedPieces = CalculateClaimedPieces(offsetX, offsetY, width, height);
 
-            return  new FabricClaim(id, claimedPieces);
+            return new FabricClaim(id, claimedPieces);
         }
+
+        public int Id { get; }
+        public IEnumerable<Coordinate> ClaimedCoordinates { get; }
 
         private static IEnumerable<Coordinate> CalculateClaimedPieces(int offsetX, int offsetY, int width, int height)
         {
@@ -35,10 +35,10 @@ namespace Challenge3
                     yield return new Coordinate(x + offsetX, y + offsetY);
         }
 
-        private FabricClaim(int id, IEnumerable<Coordinate> claimedPieces)
+        private FabricClaim(int id, IEnumerable<Coordinate> claimedCoordinates)
         {
             Id = id;
-            ClaimedPieces = claimedPieces;
+            ClaimedCoordinates = claimedCoordinates;
         }
     }
 }

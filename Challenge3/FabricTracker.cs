@@ -5,9 +5,9 @@ namespace Challenge3
 {
     public class FabricTracker
     {
-        private static readonly int Size = 1000;
-        private FabricPiece[] _pieces;
-        private Dictionary<int, bool> _overlapMap;
+        private const int Size = 1000;
+        private readonly FabricPiece[] _pieces;
+        private readonly Dictionary<int, bool> _overlapMap;
 
         public FabricTracker()
         {
@@ -33,7 +33,7 @@ namespace Challenge3
 
         private void TrackSingleClaim(FabricClaim fabricClaim)
         {
-            foreach (var claimedPiece in fabricClaim.ClaimedPieces)
+            foreach (var claimedPiece in fabricClaim.ClaimedCoordinates)
             {
                 var position = claimedPiece.X * Size + claimedPiece.Y;
 

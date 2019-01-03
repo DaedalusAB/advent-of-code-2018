@@ -13,7 +13,7 @@ namespace Challenge3.Tests
             var fabrifClaim = FabricClaim.Parse(claim);
 
             Assert.Equal(expectedId, fabrifClaim.Id);
-            Assert.True(fabrifClaim.ClaimedPieces.SequenceEqual(expectedClaimedPieces));
+            Assert.True(fabrifClaim.ClaimedCoordinates.SequenceEqual(expectedClaimedPieces));
         }
 
         public static IEnumerable<object[]> ClaimsAsStrings()
