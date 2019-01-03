@@ -21,7 +21,7 @@ namespace Challenge3
                 .Count(p => p.Claims.Count > 1);
 
         public int SingleNonOverlappingClaim =>
-            0;
+            0;  //  TODO
 
         public void TrackAll(IEnumerable<FabricClaim> fabricClaims)
         {
@@ -44,6 +44,8 @@ namespace Challenge3
 
                 _pieces[position].AddClaim(fabricClaim.Id);
             }
+
+            // TODO
         }
 
     }

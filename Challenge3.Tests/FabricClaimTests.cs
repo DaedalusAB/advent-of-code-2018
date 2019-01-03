@@ -8,7 +8,7 @@ namespace Challenge3.Tests
     {
         [Theory]
         [MemberData(nameof(ClaimsAsStrings))]
-        public void ParseClaimFromString(string claim, int expectedId, IEnumerable<(int, int)> expectedClaimedPieces)
+        public void ParseClaimFromString(string claim, int expectedId, IEnumerable<Coordinate> expectedClaimedPieces)
         {
             var fabrifClaim = FabricClaim.Parse(claim);
 
@@ -22,7 +22,7 @@ namespace Challenge3.Tests
             {
                 "#1 @ 0,0 2,2",
                 1,
-                new [] { (0, 0), (0, 1), (1, 0), (1, 1) }
+                new [] { new Coordinate(0, 0), new Coordinate(0, 1), new Coordinate(1, 0), new Coordinate(1, 1) }
             };
         }
     }
