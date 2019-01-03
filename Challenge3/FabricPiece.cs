@@ -2,7 +2,7 @@
 
 namespace Challenge3
 {
-    public class FabricPiece
+    public class FabricPiece : ValueObject
     {
         public List<int> Claims { get; }
         public Coordinate Coordinate { get; }
@@ -15,5 +15,11 @@ namespace Challenge3
 
         public void AddClaim(int id) =>
             Claims.Add(id);
+
+        protected override IEnumerable<object> GetAtomicValues()
+        {
+            yield return Claims;
+            yield return Coordinate;
+        }
     }
 }
