@@ -6,34 +6,44 @@ namespace Challenge3
     public class FabricTracker
     {
         private static readonly int Size = 1000;
-        
-        public static int TotalOverlap(IEnumerable<FabricClaim> fabricClaims)
+        private FabricPiece[] _pieces;
+        private Dictionary<int, bool> _overlapMap;
+
+        public FabricTracker()
         {
-            var pieces = new FabricPiece[Size * Size];
-
-            foreach (var fabricClaim in fabricClaims)
-            {
-                foreach (var claimedPiece in fabricClaim.ClaimedPieces)
-                {
-                    var position = claimedPiece.X * Size + claimedPiece.Y;
-
-                    if (pieces[position] == null)
-                    {
-                        pieces[position] = new FabricPiece(claimedPiece.X, claimedPiece.Y);
-                    }
-
-                    pieces[position].AddClaim(fabricClaim.Id);
-                }
-            }
-
-            return pieces
-                .Where(p => p != null)
-                .Count(p => p.Claims.Count > 1);
+            _pieces = new FabricPiece[Size * Size];
+            _overlapMap = new Dictionary<int, bool>();
         }
 
-        public static int SingleNonOverlapping(IEnumerable<FabricClaim> fabricClaims)
+        public int TotalOverlap =>
+            _pieces
+                .Where(p => p != null)
+                .Count(p => p.Claims.Count > 1);
+
+        public int SingleNonOverlappingClaim =>
+            0;
+
+        public void TrackAll(IEnumerable<FabricClaim> fabricClaims)
         {
-            return 0;
+            foreach (var fabricClaim in fabricClaims)
+            {
+                TrackSingleClaim(fabricClaim);
+            }
+        }
+
+        private void TrackSingleClaim(FabricClaim fabricClaim)
+        {
+            foreach (var claimedPiece in fabricClaim.ClaimedPieces)
+            {
+                var position = claimedPiece.X * Size + claimedPiece.Y;
+
+                if (_pieces[position] == null)
+                {
+                    _pieces[position] = new FabricPiece(claimedPiece.X, claimedPiece.Y);
+                }
+
+                _pieces[position].AddClaim(fabricClaim.Id);
+            }
         }
 
     }

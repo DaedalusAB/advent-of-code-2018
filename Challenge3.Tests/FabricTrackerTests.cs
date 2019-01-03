@@ -11,7 +11,10 @@ namespace Challenge3.Tests
             var claims = new FileParser("Files/claims.txt").ReadAllLines();
             var fabricClaims = FabricClaim.ParseAll(claims);
 
-            Assert.Equal(104712, FabricTracker.TotalOverlap(fabricClaims));
+            var tracker = new FabricTracker();
+            tracker.TrackAll(fabricClaims);
+
+            Assert.Equal(104712, tracker.TotalOverlap);
         }
 
         [Fact]
@@ -20,7 +23,10 @@ namespace Challenge3.Tests
             var claims = new FileParser("Files/claims.txt").ReadAllLines();
             var fabricClaims = FabricClaim.ParseAll(claims);
 
-            Assert.Equal(0, FabricTracker.SingleNonOverlapping(fabricClaims));
+            var tracker = new FabricTracker();
+            tracker.TrackAll(fabricClaims);
+
+            Assert.Equal(0, tracker.SingleNonOverlappingClaim);
         }
     }
 }
